@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/add}" th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td>
+                <input th:field="*{id}"/>
+                <div th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>User Name:</td>
+            <td>
+                <input th:field="*{username}"/>
+                <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>
+                <input th:field="*{email}"/>
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                <input th:field="*{password}"/>
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Insert">
+                <input type="reset" value="Clear">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
