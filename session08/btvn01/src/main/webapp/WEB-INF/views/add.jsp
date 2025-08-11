@@ -36,7 +36,11 @@
                 <form:errors path="dob" cssStyle="color: red"/>
             </td>
         </tr>
-
+        <tr>
+            <td>
+                <input type="submit" value="Lưu thông tin">
+            </td>
+        </tr>
     </table>
 </form:form>
 </body>

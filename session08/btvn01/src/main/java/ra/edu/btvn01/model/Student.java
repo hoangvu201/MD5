@@ -4,6 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 @Data
@@ -11,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Student {
     private int id;
-    @sNotBlank(message = "Tên sinh viên không được để trống")
+    @NotBlank(message = "Tên sinh viên không được để trống")
     @Size(max = 50, message = "Tên sinh viên không được dài quá 50 ký tự")
     private String name;
 
@@ -21,5 +22,6 @@ public class Student {
 
     @NotNull(message = "Ngày sinh không được để trống")
     @Past(message = "Ngày sinh phải là ngày trong quá khứ")
-    private Date birthDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dob;
 }

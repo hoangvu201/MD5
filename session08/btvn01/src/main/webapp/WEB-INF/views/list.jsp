@@ -21,19 +21,20 @@
         <td>Ngày sinh</td>
         <td>Hành động</td>
     </tr>
-    <c:forEach items="student" var="s">
+    <c:forEach items="${list}" var="s">
         <tr>
             <td>${s.id}</td>
             <td>${s.name}</td>
             <td>${s.email}</td>
             <td>${s.dob}</td>
             <td>
-                <a href="${pageContext.request.contextPath}/update?id=${s.id}">Sửa</a>
-                <a href="${pageContext.request.contextPath}/deleteStudent?id=${s.id}"
+                <a href="${pageContext.request.contextPath}/students/update?id=${s.id}">Sửa</a>
+                <a href="${pageContext.request.contextPath}/students/deleteStudent?id=${s.id}"
                    onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
             </td>
         </tr>
     </c:forEach>
 </table>
+<a href="${pageContext.request.contextPath}/students/add">Thêm sinh viên mới</a>
 </body>
 </html>
