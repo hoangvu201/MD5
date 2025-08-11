@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh Sách Sản Phẩm</title>
+    <style>
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; }
+        img { max-width: 100px; }
+    </style>
+</head>
+<body>
+<h2>Danh Sách Sản Phẩm</h2>
+
+<form th:action="@{/products}" method="get">
+    <input type="text" name="search" placeholder="Nhập tên sản phẩm" th:value="${search}" />
+    <button type="submit">Search</button>
+</form>
+
+<p th:if="${message}" th:text="${message}" style="color:red"></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Mã SP</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Mô tả</th>
+        <th>Hình ảnh</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${products}">
+        <td th:text="${p.code}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.price}"></td>
+        <td th:text="${p.description}"></td>
+        <td><img th:src="@{${p.imageUrl}}" th:alt="${p.name}" /></td>
+    </tr>
+    </tbody>
+</table>
+
+<p th:if="${message}" th:text="${message}" style="color:red"></p>
+
+</body>
+</html>
