@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th ="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách bài viết</title>
+</head>
+<body>
+    <h2>Bài viết của bạn</h2>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nội dung</th>
+            <th>Hình ảnh</th>
+            <th>Ngày tạo</th>
+            <th>Người đăng</th>
+            <th>Bạn bè</th>
+            <th>Hoạt động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.id}"></td>
+            <td th:text="${post.content}"></td>
+            <td>
+                <img th:if="${post.image != null}" th:src="${post.image}" alt="ảnh" width="100"/>
+            </td>
+            <td th:text="${post.createdDate}"></td>
+            <td th:text="${post.user.fullName}"></td>
+            <td th:text="${post.friend != null ? post.friend.fullName : ''}"></td>
+            <td>
+                <a th:href="@{/posts/delete/{id}(id=${post.id})}" onclick="return confirm('Bạn có chắc muốn xoá?')">Xoá</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/posts/add}">Thêm mới Bài Viết</a>
+</body>
+</html>
